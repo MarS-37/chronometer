@@ -1,9 +1,8 @@
-/* C++20 */
-
 #include <iostream>
 #include <iomanip>
 #include <chrono>
 #include <ctime>
+
 
 
 int main()
@@ -88,6 +87,7 @@ int main()
     std::cout << std::setw(2) << seconds.count() << ".";	// two symbols for seconds
     std::cout << std::setw(3) << ms.count() << std::endl;	// two symbols for milliseconds
 	std::cout << "\n";
+
 
 
     return 0;
