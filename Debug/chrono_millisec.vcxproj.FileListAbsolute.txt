@@ -1,0 +1,2 @@
+C:\Projects\chrono_millisec\Debug\chrono_millisec.exe
+C:\PortableGit\GitHub\chronometer\Debug\chrono_millisec.exe
