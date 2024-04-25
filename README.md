@@ -1,2 +1,4 @@
 # chronometer
-start - end - time
+start - finish - time
+
+когда пишешь код часто хочется узнать как быстро он работает...
