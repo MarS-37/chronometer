@@ -14,6 +14,7 @@ class Chronometr
 {
 public:
 	Chronometr() : started(false) {};
+	
 	// method locks the start
 	void TimeStart()
 	{
@@ -38,6 +39,7 @@ public:
 		// output milliseconds
 		std::cout << "." << std::setw(3) << std::setfill('0') << ms.count() % 1000 << "\n\n";
 	}
+
 	// method to end the time countdown
 	void TimeFinish()
 	{
@@ -69,6 +71,42 @@ public:
 		}
 	}
 
+	// method for outputting the result of time countdown
+	void TimeResult()
+	{
+		// if timing is started
+		if (started) {
+			// get current time
+			auto finish_time = std::chrono::steady_clock::now();
+			// calculate the time duration
+			auto duration = finish_time - start_time;
+			// convert duration to milliseconds
+			auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(duration);
+
+			// hours
+			auto hours = std::chrono::duration_cast<std::chrono::hours>(ms);
+			ms -= hours;
+			// minutes
+			auto minutes = std::chrono::duration_cast<std::chrono::minutes>(ms);
+			ms -= minutes;
+			// seconds
+			auto seconds = std::chrono::duration_cast<std::chrono::seconds>(ms);
+			ms -= seconds;
+
+			// output the result time in the format HH:MM:SS.mmm
+			std::cout << "Time elapsed: ";
+			// output of numbers with leading zeros
+			std::cout << std::setfill('0');
+			std::cout << std::setw(2) << hours.count() << ":";
+			std::cout << std::setw(2) << minutes.count() << ":";
+			std::cout << std::setw(2) << seconds.count() << ".";
+			std::cout << std::setw(3) << ms.count() << std::endl;
+		}
+		else {
+			std::cout << "Timer has not started.\n";
+		}
+	}
+
 private:
 	bool started;
 	std::chrono::time_point<std::chrono::steady_clock> start_time;
@@ -83,7 +121,7 @@ int main() {
 
 	// ==> payload	
 	long long int l{ 0 };
-	for (long long int i = 1; i < 100'000'000'001; ++i) {
+	for (long long int i = 1; i < 30'000'000'001; ++i) {
 	    // payload
 		++l;
 	    if (l >= 10'000'000'000) {
@@ -97,6 +135,7 @@ int main() {
 
 
 	timer.TimeFinish();
+	timer.TimeResult();
 
 
 
