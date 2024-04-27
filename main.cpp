@@ -1,8 +1,3 @@
-#include <iostream>
-#include <iomanip>
-#include <chrono>
-#include <ctime>
-
 //+------------------------------------------------------------------+
 //|                         class Chronometr                         |
 //| auxiliary class, to determine the speed of implementation of     |
@@ -10,6 +5,14 @@
 //|                                      Copyright 2024, Mars37 Ltd. |
 //|                                       markin.sergey.37@yandex.ru |
 //+------------------------------------------------------------------+
+
+
+#include <iostream>
+#include <iomanip>
+#include <chrono>
+#include <ctime>
+
+
 class Chronometr
 {
 public:
