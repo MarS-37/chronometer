@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <string>
 #include <chrono>
 #include <ctime>
 
@@ -19,7 +20,7 @@ public:
 	Chronometr() : started(false) {};
 	
 	// method locks the start
-	void TimeStart()
+	void TimeStart(std::string message = "")
 	{
 		started = true;
 		// get the current time
@@ -36,7 +37,8 @@ public:
 			);
 
 		// output the start time in the format HH:MM:SS.mmm
-		std::cout << "Start_time: ";
+		if(message != "")
+			std::cout << message << ": ";
 		// format and display hours, minutes and seconds
 		std::cout << std::put_time(&start_tm, "%H:%M:%S");
 		// output milliseconds
@@ -44,7 +46,7 @@ public:
 	}
 
 	// method to end the time countdown
-	void TimeFinish()
+	void TimeFinish(std::string message = "")
 	{
 		// if timing is started
 		if (started) {
@@ -62,7 +64,8 @@ public:
 			);
 
 			// output the finish time in the format HH:MM:SS.mmm
-			std::cout << "Finish time: ";
+			if (message != "")
+				std::cout << message << ": ";
 			// format and display hours, minutesand seconds
 			std::cout << std::put_time(&finish_tm, "%H:%M:%S");
 			std::cout << "." << std::setw(3) << std::setfill('0') << ms.count() % 1000 << std::endl;
@@ -75,7 +78,7 @@ public:
 	}
 
 	// method for outputting the result of time countdown
-	void TimeResult()
+	void TimeResult(std::string message = "")
 	{
 		// if timing is started
 		if (started) {
@@ -97,7 +100,8 @@ public:
 			ms -= seconds;
 
 			// output the result time in the format HH:MM:SS.mmm
-			std::cout << "Time elapsed: ";
+			if (message != "")
+				std::cout << message << ": ";
 			// output of numbers with leading zeros
 			std::cout << std::setfill('0');
 			std::cout << std::setw(2) << hours.count() << ":";
@@ -118,7 +122,7 @@ private:
 
 int main() {
 	Chronometr timer;
-	timer.TimeStart();
+	timer.TimeStart("Start program");
 
 
 
@@ -137,8 +141,8 @@ int main() {
 
 
 
-	timer.TimeFinish();
-	timer.TimeResult();
+	timer.TimeFinish("Finish program");
+	timer.TimeResult("Work time");
 
 
 
